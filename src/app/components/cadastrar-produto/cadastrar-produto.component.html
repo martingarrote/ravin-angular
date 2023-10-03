@@ -1,0 +1,21 @@
+<form [formGroup]="formularioProduto">
+    <input type="text" formControlName="name">
+    <input type="text" formControlName="description">
+    <input type="text" formControlName="code">
+    <input type="text" formControlName="costPrice">
+    <input type="text" formControlName="salePrice">
+    <input type="text" formControlName="preparationTime">
+
+    
+    <select formControlName="productType">
+        <option value="SNACK">Snack</option>
+        <option value="DRINK">Drink</option>
+        <option value="DESSERT">Dessert</option>
+    </select>
+    
+    <button type="submit" (click)="enviarFormulario()">Enviar</button>
+    
+</form>
+
+<button (click)="inverter()">Mudar visualização</button>
+<h5 *ngIf="!mostrar">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, totam.</h5>
