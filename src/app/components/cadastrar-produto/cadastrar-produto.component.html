@@ -1,21 +1,44 @@
-<form [formGroup]="formularioProduto">
-    <input type="text" formControlName="name">
-    <input type="text" formControlName="description">
-    <input type="text" formControlName="code">
-    <input type="text" formControlName="costPrice">
-    <input type="text" formControlName="salePrice">
-    <input type="text" formControlName="preparationTime">
+<form class="product-form">
+    <h4>Insira as informações do produto</h4>
 
-    
-    <select formControlName="productType">
-        <option value="SNACK">Snack</option>
-        <option value="DRINK">Drink</option>
-        <option value="DESSERT">Dessert</option>
-    </select>
-    
-    <button type="submit" (click)="enviarFormulario()">Enviar</button>
-    
-</form>
+    <mat-form-field class="" appearance="fill">
+      <mat-label>Nome</mat-label>
+      <input matInput>
+    </mat-form-field>
 
-<button (click)="inverter()">Mudar visualização</button>
-<h5 *ngIf="!mostrar">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, totam.</h5>
+    <mat-form-field class="" appearance="fill">
+      <mat-label>Descrição</mat-label>
+      <input matInput>
+    </mat-form-field>
+
+    <mat-form-field class="" appearance="fill">
+        <mat-label>Código</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <mat-form-field class="" appearance="fill">
+        <mat-label>Preço de custo</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <mat-form-field class="" appearance="fill">
+        <mat-label>Preço de venda</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <mat-form-field class="" appearance="fill">
+        <mat-label>Tempo de preparação</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Tipo do produto</mat-label>
+        <mat-select>
+            <mat-option *ngFor="let type of productTypes" [value]="type">
+                {{type}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" (click)="sendForm()">Enviar</button>
+</form>  

@@ -4,12 +4,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-cadastrar-produto',
   templateUrl: './cadastrar-produto.component.html',
-  styleUrls: ['./cadastrar-produto.component.scss']
+  styleUrls: ['./cadastrar-produto.component.scss'],
 })
 export class CadastrarProdutoComponent implements OnInit {
-  // declarar formulário
-  public formularioProduto: FormGroup;
-  public mostrar: boolean = true;
+  public productForm: FormGroup;
+
+  public productTypes: string[] = ["SNACK", "DRINK", "DESSERT"]
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -21,7 +21,7 @@ export class CadastrarProdutoComponent implements OnInit {
   // Funcao para criar formulario (createForm)
 
   private createForm() {
-    this.formularioProduto = this.formBuilder.group({
+    this.productForm = this.formBuilder.group({
       name: '',
       description: '',
 		  code: '',
@@ -34,16 +34,8 @@ export class CadastrarProdutoComponent implements OnInit {
     
   }
 
-  enviarFormulario() {
-    console.log(this.formularioProduto.value)  
-  }
-
-  inverter() {
-    if (this.mostrar) {
-      this.mostrar = false;
-    } else {
-      this.mostrar = true
-    }
+  sendForm() {
+    console.log(this.productForm.value)  
   }
 
 }
