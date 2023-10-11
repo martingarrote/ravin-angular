@@ -1,44 +1,44 @@
-<form class="product-form">
+<form [formGroup]="productForm" class="product-form">
     <h4>Insira as informações do produto</h4>
 
     <mat-form-field class="" appearance="fill">
       <mat-label>Nome</mat-label>
-      <input matInput>
+      <input matInput formControlName="name">
     </mat-form-field>
 
     <mat-form-field class="" appearance="fill">
       <mat-label>Descrição</mat-label>
-      <input matInput>
+      <input matInput formControlName="description">
     </mat-form-field>
 
     <mat-form-field class="" appearance="fill">
         <mat-label>Código</mat-label>
-        <input matInput>
+        <input matInput formControlName="code">
     </mat-form-field>
 
     <mat-form-field class="" appearance="fill">
         <mat-label>Preço de custo</mat-label>
-        <input matInput>
+        <input matInput formControlName="costPrice">
     </mat-form-field>
 
     <mat-form-field class="" appearance="fill">
         <mat-label>Preço de venda</mat-label>
-        <input matInput>
+        <input matInput formControlName="salePrice">
     </mat-form-field>
 
     <mat-form-field class="" appearance="fill">
         <mat-label>Tempo de preparação</mat-label>
-        <input matInput>
+        <input matInput formControlName="preparationTime">
     </mat-form-field>
 
     <mat-form-field>
         <mat-label>Tipo do produto</mat-label>
-        <mat-select>
+        <mat-select formControlName="productType">
             <mat-option *ngFor="let type of productTypes" [value]="type">
                 {{type}}
             </mat-option>
         </mat-select>
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit" (click)="sendForm()">Enviar</button>
+    <button mat-raised-button color="primary" type="submit" (click)="salvarProduto()">Enviar</button>
 </form>  

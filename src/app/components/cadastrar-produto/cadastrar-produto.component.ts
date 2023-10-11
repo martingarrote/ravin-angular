@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ProdutoService } from 'src/app/@core/services/produto.service';
 
 @Component({
   selector: 'app-cadastrar-produto',
@@ -11,7 +12,8 @@ export class CadastrarProdutoComponent implements OnInit {
 
   public productTypes: string[] = ["SNACK", "DRINK", "DESSERT"]
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, 
+              private produtoService: ProdutoService) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -19,6 +21,11 @@ export class CadastrarProdutoComponent implements OnInit {
 
   // Formulario iniciado dentro do ts
   // Funcao para criar formulario (createForm)
+
+  public salvarProduto() {
+    const jsonPronto = this.productForm.value
+    this.produtoService.create(jsonPronto).subscribe(e => console.log(e))
+  }
 
   private createForm() {
     this.productForm = this.formBuilder.group({
@@ -30,12 +37,5 @@ export class CadastrarProdutoComponent implements OnInit {
 		  preparationTime: '',
 		  productType: ''
     })
-
-    
   }
-
-  sendForm() {
-    console.log(this.productForm.value)  
-  }
-
 }
